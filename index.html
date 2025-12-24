@@ -6,48 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="icon" href="./assets/imagem-principal.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,200;1,800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/buttons.css">
     <link rel="stylesheet" href="css/records.css">
     <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="CSS/form.css">
     <script src="main.js" defer></script>
     <title>Cadastro Empresas</title>
 </head>
 
 <body>
     <header>
-        <h1 class="header-title">Cadastro Empresas Filiais</h1>
+        <div class="header-container">
+            <div header-title>
+                <h1 class="header-title-container">Cadastro Empresas Filiais</h1>
+            </div>
+            <div class="image-container">
+                <img src="./assets/imagem-principal.png" alt="Descrição da Imagem">
+            </div>
+        </div>
     </header>
+
     <main>
-        <button type="button" class="button blue mobile" id="cadastrarCliente">Cadastrar Cliente</button>
+        <button type="button" class="button blue mobile" id="cadastrarEmpresa">Cadastrar Empresa</button>
         <table class="records">
-            <!---  <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>CNPJ</th>
-                    <th>RAZÃO SOCIAL</th>
-                    <th>NOME FANTASIA</th>
-                    <th>ENDEREÇO</th>
-                    <th>TELEFONE</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>1234567891235</td>
-                    <td>TESTE</td>
-                    <td>TESTE</td>
-                    <td>TESTE</td>
-                    <td>TESTE</td>
-                    <td>
-                        <button type="button" class="button green">editar</button>
-                        <button type="button" class="button red">excluir</button>
-                    </td>
-                </tr>
-        </table>
-        -->
             <table class="records">
                 <thead>
                     <tr>
@@ -83,33 +68,29 @@
                         <h2>Nova Empresa</h2>
                         <span class="modal-close" id="modalClose">&#10006;</span>
                     </header>
-                    <!--
-                    <form class="modal-form">
-                        <input type="text" class="modal-field" placeholder="Nome do Cliente">
-                        <input type="email" class="modal-field" placeholder="e-mail do Cliente">
-                        <input type="text" class="modal-field" placeholder="Celular do Cliente">
-                        <input type="text" class="modal-field" placeholder="Cidade do Cliente">
-                    </form>
-                    -->
                     <form class="modal-form">
                         <div class="form-group">
-                            <label>Nome do Cliente</label>
-                            <input type="text" class="modal-field" placeholder="Digite o nome completo">
+                            <label>CNPJ</label>
+                            <input type="text" class="modal-field" placeholder="Informe o CNPJ da Empresa">
                         </div>
 
                         <div class="form-group">
-                            <label>E-mail</label>
-                            <input type="email" class="modal-field" placeholder="exemplo@email.com">
+                            <label>RAZÃO SOCIAL</label>
+                            <input type="text" class="modal-field" placeholder="Informe a Razão Social da Empresa">
                         </div>
 
                         <div class="form-group">
-                            <label>Celular</label>
-                            <input type="text" class="modal-field" placeholder="(99) 99999-9999">
+                            <label>NOME FANTASIA</label>
+                            <input type="text" class="modal-field" placeholder="Informe o Nome Fantasia da Empresa">
                         </div>
 
                         <div class="form-group">
-                            <label>Cidade</label>
-                            <input type="text" class="modal-field" placeholder="Cidade do cliente">
+                            <label>ENDEREÇO</label>
+                            <input type="text" class="modal-field" placeholder="Informe endereço da Empresa">
+                        </div>
+                        <div class="form-group">
+                            <label>TELEFONE</label>
+                            <input type="text" class="modal-field" placeholder="Informe o telefone da Empresa">
                         </div>
 
                         <div class="form-actions">
@@ -117,11 +98,6 @@
                             <button type="button" class="button red">Cancelar</button>
                         </div>
                     </form>
-
-                    <footer class="modal-footer">
-                        <button class="button green">Salvar</button>
-                        <button class="button blue">Cancelar</button>
-                    </footer>
                 </div>
             </div>
     </main>
