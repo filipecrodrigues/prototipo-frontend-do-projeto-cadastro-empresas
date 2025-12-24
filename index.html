@@ -1,109 +1,170 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="icon" href="./assets/imagem-principal.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,200;1,800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/buttons.css">
-    <link rel="stylesheet" href="css/records.css">
-    <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="CSS/form.css">
-    <script src="main.js" defer></script>
-    <title>Cadastro Empresas</title>
-</head>
+    <link rel="shortcut icon" href="./assets/imagem-principal.png" type="image/x-icon">
+    <title>Cadastro de Empresas Filiais</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" 
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
 <body>
+
+    <!-- HEADER -->
     <header>
         <div class="header-container">
-            <div header-title>
-                <h1 class="header-title-container">Cadastro Empresas Filiais</h1>
+            <div class="header-left">
+                <div class="logo">F</div>
+                <h1 class="header-title">Cadastro de Empresas Filiais</h1>
             </div>
-            <div class="image-container">
-                <img src="./assets/imagem-principal.png" alt="Descrição da Imagem">
+
+            <div class="header-actions">
+                <button class="btn btn-primary" id="btnNovaEmpresa">
+                    + Nova Empresa
+                </button>
             </div>
         </div>
     </header>
 
+    <!-- MAIN -->
     <main>
-        <button type="button" class="button blue mobile" id="cadastrarEmpresa">Cadastrar Empresa</button>
-        <table class="records">
-            <table class="records">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>CNPJ</th>
-                        <th>RAZÃO SOCIAL</th>
-                        <th>NOME FANTASIA</th>
-                        <th>ENDEREÇO</th>
-                        <th>TELEFONE</th>
-                        <th>AÇÕES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1234567891235</td>
-                        <td>TESTE</td>
-                        <td>TESTE</td>
-                        <td>TESTE</td>
-                        <td>TESTE</td>
-                        <td class="actions">
-                            <button type="button" class="button green">Editar</button>
-                            <button type="button" class="button red">Excluir</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="container">
 
+            <!-- TOOLBAR -->
+            <div class="toolbar">
+                <div class="toolbar-left">
+                    <h2>Empresas Cadastradas</h2>
+                    <p id="empresasCount">0 empresas no sistema</p>
+                </div>
 
-            <div class="modal" id="modal">
-                <div class="modal-content">
-                    <header class="modal-header">
-                        <h2>Nova Empresa</h2>
-                        <span class="modal-close" id="modalClose">&#10006;</span>
-                    </header>
-                    <form class="modal-form">
-                        <div class="form-group">
-                            <label>CNPJ</label>
-                            <input type="text" class="modal-field" placeholder="Informe o CNPJ da Empresa">
-                        </div>
-
-                        <div class="form-group">
-                            <label>RAZÃO SOCIAL</label>
-                            <input type="text" class="modal-field" placeholder="Informe a Razão Social da Empresa">
-                        </div>
-
-                        <div class="form-group">
-                            <label>NOME FANTASIA</label>
-                            <input type="text" class="modal-field" placeholder="Informe o Nome Fantasia da Empresa">
-                        </div>
-
-                        <div class="form-group">
-                            <label>ENDEREÇO</label>
-                            <input type="text" class="modal-field" placeholder="Informe endereço da Empresa">
-                        </div>
-                        <div class="form-group">
-                            <label>TELEFONE</label>
-                            <input type="text" class="modal-field" placeholder="Informe o telefone da Empresa">
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="submit" class="button green">Salvar</button>
-                            <button type="button" class="button red">Cancelar</button>
-                        </div>
-                    </form>
+                <div class="search-box">
+                    <input
+                        type="text"
+                        class="search-input"
+                        id="searchInput"
+                        placeholder="Buscar por CNPJ, razão social..."
+                    >
                 </div>
             </div>
-    </main>
-    <footer>
-        Copyright &copy; Filipe Cândido
-    </footer>
-</body>
 
+            <!-- CARDS -->
+            <div class="cards-grid" id="cardsContainer">
+                <!-- Cards inseridos via JavaScript -->
+            </div>
+
+        </div>
+    </main>
+
+
+
+    <!-- FAB MOBILE -->
+    <button class="fab" id="fabNovaEmpresa">+</button>
+
+    <!-- MODAL -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 id="modalTitle">Nova Empresa</h2>
+                <button class="modal-close" id="btnCloseModal">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <form id="empresaForm">
+
+                    <input type="hidden" id="empresaId">
+
+                    <div class="form-group">
+                        <label class="form-label" for="cnpj">CNPJ *</label>
+                        <input
+                            type="text"
+                            class="form-input"
+                            id="cnpj"
+                            placeholder="00.000.000/0000-00"
+                            maxlength="18"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="razaoSocial">Razão Social *</label>
+                        <input
+                            type="text"
+                            class="form-input"
+                            id="razaoSocial"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="nomeFantasia">Nome Fantasia *</label>
+                        <input
+                            type="text"
+                            class="form-input"
+                            id="nomeFantasia"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="atividadeEconomica">Atividade Econômica *</label>
+                        <input
+                            type="text"
+                            class="form-input"
+                            id="atividadeEconomica"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="endereco">Endereço *</label>
+                        <input
+                            type="text"
+                            class="form-input"
+                            id="endereco"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="telefone">Telefone *</label>
+                        <input
+                            type="text"
+                            class="form-input"
+                            id="telefone"
+                            maxlength="15"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="btnCancelar">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                            Salvar
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+        <!-- FOOTER -->
+    <footer>
+        Copyright © Filipe Cândido - 2025
+    </footer>
+
+    <!-- JS -->
+    <script src="js/script.js"></script>
+
+</body>
 </html>
